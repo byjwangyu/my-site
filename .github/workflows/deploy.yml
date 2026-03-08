@@ -28,3 +28,11 @@ jobs:
           source: "dist/*"
           target: "/var/www/mysite"
           strip_components: 1
+
+      - name: Print URLs
+        run: |
+          echo "🔗 Navigation: http://${{ secrets.VPS_HOST }}/nav.html"
+          for f in dist/*.html; do
+            name=$(basename "$f")
+            echo "🔗 http://${{ secrets.VPS_HOST }}/${name}"
+          done
