@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback, useRef } from "react";
+import { useState, useEffect, useCallback } from "react";
 
 const S = {
   sans: "'Noto Sans SC', sans-serif",
@@ -89,7 +89,7 @@ const SLIDES = [
   // 0: Cover - enhanced
   {
     content: (a) => (
-      <div className="flex flex-col items-center justify-center h-full relative overflow-hidden">
+      <div style={{ display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", height:"100%", position:"relative", overflow:"hidden" }}>
         <div style={{
           position: 'absolute', inset: 0,
           background: 'radial-gradient(ellipse at 30% 20%, rgba(99,102,241,0.15) 0%, transparent 50%), radial-gradient(ellipse at 70% 80%, rgba(16,185,129,0.1) 0%, transparent 50%), #0a0a0f',
@@ -104,7 +104,7 @@ const SLIDES = [
         <div style={{ position: 'absolute', top: '30%', left: '20%', width: 400, height: 400, borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.08) 0%, transparent 70%)', animation: a ? 'breathe 4s ease-in-out infinite' : 'none' }} />
         <div style={{ position: 'absolute', bottom: '20%', right: '15%', width: 300, height: 300, borderRadius: '50%', background: 'radial-gradient(circle, rgba(16,185,129,0.06) 0%, transparent 70%)', animation: a ? 'breathe 5s ease-in-out 1s infinite' : 'none' }} />
 
-        <div className="relative z-10 text-center">
+        <div style={{ position:"relative", zIndex:10, textAlign:"center" }}>
           {/* Badge */}
           <div style={{
             fontSize: 14, letterSpacing: 6, color: S.indigo, marginBottom: 28, fontFamily: S.mono, textTransform: 'uppercase',
@@ -154,9 +154,9 @@ const SLIDES = [
   // 1: Four Stages
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="01" title="AI办公的四个阶段" active={a} />
-        <div className="flex-1 flex items-center justify-center">
+        <div style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center" }}>
           <div style={{ display: 'flex', gap: 20, maxWidth: 960, width: '100%' }}>
             {[
               { level: '第一层', title: '网页对话', tools: '豆包·Kimi·DeepSeek', items: ['问答', '翻译', '写文案'], color: S.indigo, icon: '💬' },
@@ -164,14 +164,14 @@ const SLIDES = [
               { level: '第三层', title: 'Cursor / OpenCode', tools: 'AI 编程工具', items: ['操作文件', '生成文档', '数据处理'], color: S.amber, icon: '⚡' },
               { level: '第四层', title: 'OpenClaw', tools: 'AI Agent · 自主执行', items: ['全自动化', '跨平台', '7×24运行'], color: S.red, icon: '🦞' },
             ].map((s, i) => (
-              <div key={i} className="stage-card" style={{
+              <div key={i} style={{ 
                 flex: 1, padding: '24px 20px', borderRadius: 16,
                 background: `${s.color}0a`, border: `1px solid ${s.color}25`,
                 display: 'flex', flexDirection: 'column', gap: 12,
                 animation: a ? `scaleIn 0.5s ease-out ${i * 0.12}s both` : 'none',
                 transition: 'transform 0.3s ease, box-shadow 0.3s ease',
                 position: 'relative', overflow: 'hidden',
-              }}>
+               }}>
                 {/* Top glow bar */}
                 <div style={{
                   position: 'absolute', top: 0, left: '20%', right: '20%', height: 2,
@@ -204,9 +204,9 @@ const SLIDES = [
   // 2: Web AI
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="02" title="网页版AI — 入门好用，但有天花板" active={a} />
-        <div className="flex-1 flex gap-10 items-center">
+        <div style={{ flex:1, display:"flex", gap:40, alignItems:"center" }}>
           <div style={{ flex: 1, animation: FaLeft(a) }}>
             <div style={{ marginBottom: 24 }}>
               <div style={{ fontSize: 13, color: S.indigo, marginBottom: 10, fontFamily: S.mono }}>主流工具</div>
@@ -244,9 +244,9 @@ const SLIDES = [
   // 3: Markdown intro
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="03" title="Markdown — 被严重低估的办公格式" active={a} />
-        <div className="flex-1 flex gap-10 items-center">
+        <div style={{ flex:1, display:"flex", gap:40, alignItems:"center" }}>
           <div style={{ flex: 1, animation: Fa(a) }}>
             <div style={{
               padding: 22, borderRadius: 12, marginBottom: 20,
@@ -294,9 +294,9 @@ const SLIDES = [
   // 4: Markdown tools
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="04" title="Markdown 工具生态 — 让 .md 真正好用" active={a} />
-        <div className="flex-1 flex gap-8 items-start" style={{ marginTop: 8 }}>
+        <div style={{ flex:1, display:"flex", gap:32, alignItems:"flex-start",  marginTop: 8  }}>
           <div style={{
             flex: 2, padding: 24, borderRadius: 16,
             background: `linear-gradient(135deg, ${S.purple}10 0%, ${S.indigo}08 100%)`,
@@ -363,9 +363,9 @@ const SLIDES = [
   // 5: Mermaid
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="05" title="Mermaid — 纯文本画图，轻量可视化" active={a} />
-        <div className="flex-1 flex gap-8" style={{ marginTop: 4 }}>
+        <div style={{ flex:1, display:"flex", gap:32,  marginTop: 4  }}>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 10, animation: FaLeft(a) }}>
             <div style={{ fontSize: 13, color: '#94a3b8', fontFamily: S.sans, marginBottom: 2 }}>写几行文字 → 自动生成专业图表</div>
             {[
@@ -419,9 +419,9 @@ const SLIDES = [
   // 6: Mermaid examples
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="06" title="Mermaid 实战示例" active={a} />
-        <div className="flex-1 flex gap-8" style={{ marginTop: 4 }}>
+        <div style={{ flex:1, display:"flex", gap:32,  marginTop: 4  }}>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12, animation: FaLeft(a) }}>
             <div style={{ fontSize: 13, color: S.indigo, marginBottom: 2, fontFamily: S.mono }}>思维导图 — 业务梳理</div>
             <div style={{
@@ -490,9 +490,9 @@ const SLIDES = [
   // 7: Python vis
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="07" title="复杂可视化 — Python 出场" active={a} />
-        <div className="flex-1 flex gap-8" style={{ marginTop: 4 }}>
+        <div style={{ flex:1, display:"flex", gap:32,  marginTop: 4  }}>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 12, animation: FaLeft(a) }}>
             <div style={{ fontSize: 13, color: '#94a3b8', fontFamily: S.sans }}>Mermaid 搞不定时 — 数据图表、统计分析</div>
             <div style={{
@@ -541,9 +541,9 @@ const SLIDES = [
   // 8: Cursor / OpenCode
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="08" title="Cursor / OpenCode — AI编程工具" active={a} />
-        <div className="flex-1 flex gap-8" style={{ marginTop: 4 }}>
+        <div style={{ flex:1, display:"flex", gap:32,  marginTop: 4  }}>
           <div style={{ flex: 1, animation: FaLeft(a) }}>
             <div style={{
               padding: '12px 16px', borderRadius: 10, marginBottom: 14, background: `${S.amber}08`, border: `1px solid ${S.amber}20`,
@@ -603,10 +603,10 @@ const SLIDES = [
   // 9: OpenClaw intro
   {
     content: (a) => (
-      <div className="flex flex-col h-full relative overflow-hidden" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%", position:"relative", overflow:"hidden",  padding: '48px 56px'  }}>
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: 300, height: 300, borderRadius: '50%', background: `radial-gradient(circle, ${S.red}08 0%, transparent 70%)`, animation: a ? 'breathe 4s ease-in-out infinite' : 'none' }} />
         <SlideHeader num="09" title='OpenClaw — 2026最火AI Agent 🦞' active={a} />
-        <div className="flex-1 flex gap-8 relative" style={{ marginTop: 4 }}>
+        <div style={{ flex:1, display:"flex", gap:32, position:"relative",  marginTop: 4  }}>
           <div style={{ flex: 1, animation: FaLeft(a) }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: 14, marginBottom: 16 }}>
               <div style={{
@@ -671,9 +671,9 @@ const SLIDES = [
   // 10: OpenClaw capabilities
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="10" title="OpenClaw 能做什么？" active={a} />
-        <div className="flex-1 flex gap-8" style={{ marginTop: 4 }}>
+        <div style={{ flex:1, display:"flex", gap:32,  marginTop: 4  }}>
           <div style={{ flex: 1, animation: FaLeft(a) }}>
             <div style={{ fontSize: 12, color: S.red, marginBottom: 10, fontFamily: S.mono }}>核心使用场景</div>
             {[
@@ -732,9 +732,9 @@ const SLIDES = [
   // 11: Cursor vs OpenClaw
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="11" title="Cursor vs OpenClaw — 互补而非竞争" active={a} />
-        <div className="flex-1 flex flex-col items-center justify-center gap-6">
+        <div style={{ flex:1, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:24 }}>
           <div style={{ display: 'flex', gap: 24, maxWidth: 780, width: '100%' }}>
             <Card color={S.amber} style={{ flex: 1, padding: 22, position: 'relative', overflow: 'hidden' }} anim={a ? 'scaleIn 0.5s ease-out 0.1s both' : 'none'}>
               <div style={{ position: 'absolute', top: 0, left: '10%', right: '10%', height: 2, background: `linear-gradient(90deg, transparent, ${S.amber}50, transparent)`, animation: a ? 'shimmerBar 3s ease-in-out infinite' : 'none' }} />
@@ -782,9 +782,9 @@ const SLIDES = [
   // 12: Workflow
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="12" title="实战工作流 — 端到端串联" active={a} />
-        <div className="flex-1 flex flex-col items-center justify-center gap-16">
+        <div style={{ flex:1, display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center", gap:64 }}>
           <div style={{ fontSize: 14, color: '#94a3b8', fontFamily: S.sans, animation: Fa(a) }}>把所有工具串成一条完整的生产力链路</div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 0, flexWrap: 'wrap', justifyContent: 'center', maxWidth: 880 }}>
             {[
@@ -831,9 +831,9 @@ const SLIDES = [
   // 13: Table
   {
     content: (a) => (
-      <div className="flex flex-col h-full" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%",  padding: '48px 56px'  }}>
         <SlideHeader num="13" title="工具能力对照表" active={a} />
-        <div className="flex-1 flex items-center justify-center" style={{ animation: FaScale(a) }}>
+        <div style={{ flex:1, display:"flex", alignItems:"center", justifyContent:"center",  animation: FaScale(a)  }}>
           <table style={{ width: '100%', maxWidth: 820, borderCollapse: 'separate', borderSpacing: 0, borderRadius: 12, overflow: 'hidden', fontSize: 13, fontFamily: S.sans }}>
             <thead>
               <tr style={{ background: `${S.indigo}15` }}>
@@ -873,12 +873,12 @@ const SLIDES = [
   // 14: Recommendations + ending
   {
     content: (a) => (
-      <div className="flex flex-col h-full relative overflow-hidden" style={{ padding: '48px 56px' }}>
+      <div style={{ display:"flex", flexDirection:"column", height:"100%", position:"relative", overflow:"hidden",  padding: '48px 56px'  }}>
         <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(ellipse at 50% 80%, rgba(99,102,241,0.06) 0%, transparent 60%)', animation: a ? 'breathe 5s ease-in-out infinite' : 'none' }} />
         <div style={{ position: 'relative' }}>
           <SlideHeader num="14" title="推荐组合与行动建议" active={a} />
         </div>
-        <div className="flex-1 flex gap-8 items-center relative">
+        <div style={{ flex:1, display:"flex", gap:32, alignItems:"center", position:"relative" }}>
           <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: 14, animation: FaLeft(a) }}>
             {[
               { level: '🌱 入门', tools: '豆包/Kimi + Obsidian + Typora', who: '不懂代码', color: S.green },
@@ -1014,10 +1014,7 @@ export default function Presentation() {
         * { box-sizing:border-box; margin:0; padding:0; }
         ::-webkit-scrollbar { width:0; }
         
-        .stage-card:hover {
-          transform: translateY(-3px) !important;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.3) !important;
-        }
+
       `}</style>
       <div style={{
         flex: 1, overflow: 'hidden',
